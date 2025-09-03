@@ -1,34 +1,67 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;     // for Slider (health bar)
 
-public class Player : MonoBehaviour
+public class PlayerController : MonoBehaviour
 {
-    public int maxHealth = 100;
-    public int currentHealth;
+    [Header("Health Settings")]
+    [SerializeField] private int maxHealth = 100;
+    private int currentHealth;
 
-    public HealthBar healthBar;
+    [Header("UI")]
+    [SerializeField] private Slider healthSlider;
 
-    // Start is called before the first frame update
+    [Header("Death")]
+    [SerializeField] private GameObject deathEffect;
+    private bool isDead = false;
+
     void Start()
     {
         currentHealth = maxHealth;
-        healthBar.SetMaxHealth(maxHealth);
+        if (healthSlider != null)
+            healthSlider.maxValue = maxHealth;
+        UpdateHealthUI();
     }
 
-    // Update is called once per frame
-    void Update()
+    // Call this from any collision or trigger event
+    public void TakeDamage(int amount)
     {
-        if (Input.GetKeyDown(KeyCode.Space))
+        if (isDead) return;
+        currentHealth = Mathf.Max(currentHealth - amount, 0);
+        UpdateHealthUI();
+
+        if (currentHealth == 0)
+            Die();
+    }
+
+    private void UpdateHealthUI()
+    {
+        if (healthSlider != null)
+            healthSlider.value = currentHealth;
+    }
+
+    private void Die()
+    {
+        isDead = true;
+        // optional: spawn a death effect (particles, sound, etc.)
+        if (deathEffect != null)
+            Instantiate(deathEffect, transform.position, Quaternion.identity);
+
+        // disable movement, play animation, or destroy
+        // GetComponent<PlayerMovement>().enabled = false;
+        Destroy(gameObject);
+    }
+
+    // Example: damage on trigger with "Enemy" tag
+    private void OnTriggerEnter2D(Collider2D col)
+    {
+        if (col.CompareTag("Enemy"))
         {
+            // You could pull damage from the enemy component instead of hard-coding
+            TakeDamage(25);
         }
     }
-    
-    void TakeDamage(int damage)
-    {
-        currentHealth -= damage;
-        
-        healthBar.SetHealth(currentHealth);
-    
-    }
 }
+
+
