@@ -1,59 +1,37 @@
 Canvas Crawler
 
-My Game 
+Description:
 
-Description
-Canvas Crawler plunges players into a chilling, adrenaline-fueled quest through a haunted house teeming with danger and mystery. As Hibikasu, a determined operative on a high-stakes mission, players must navigate eerie corridors and shadowy chambers to locate three elusive treasure chests before rival forces do. Armed with an axe and a quiver of arrows, Hibikasu must fend off relentless mobs of ghosts and venomous spiders that guard the house’s secrets. Each of the 12 levels intensifies the challenge, introducing smarter enemies, trickier terrain, and more complex puzzles. Players can sprint, jump, slide, and block attacks with precision, using intuitive controls — D to move forward, A to retreat, Spacebar to Jump, M to hit, and K to shoot arrows. The game blends fast-paced combat with strategic exploration, demanding quick reflexes and sharp decision-making. With every gem collected and enemy defeated, Canvas Crawler draws players deeper into its haunted world, testing their courage and skill in a race against time and terror.
+Canvas Crawler plunges players into a chilling, adrenaline-fueled quest through a haunted house teeming with danger and mystery. As Hibikasu, a determined operative on a high-stakes mission, players must navigate through the level chambers to locate three treasure chests (the code for collection system has not been added yet). Armed with a sword and being able to shoot fireballs, Hibikasu must fend off ghosts and venomous spiders that guard the house’s secrets. I have not yet been able to add enemies as well as this was one of my biggest issues. I could not find proper tutorials that would let me add a health bar or be able to take damage from enemies. Every tutorial on youtube was different and i was unable to find the one suited to my game. The game blends fast-paced combat with strategic exploration, demanding quick reflexes and sharp decision-making. With every gem collected and enemy defeated, Canvas Crawler draws players deeper into its haunted world, testing their courage and skill in a race against time and terror.
 
-Getting Started - Basics of the Game
-Starting out in Canvas Crawler drops you into a side-scrolling 2D haunted house where every step forward is a fight for survival. As Hibikasu, your mission is clear: locate three massive treasure chests before anyone else does. The controls are simple and responsive — W to move forward, S to step back, Spacebar to jump, M to shoot arrows, and K to swing your axe. You’ll face off against ghosts and spiders from the very beginning, and you’ll need to use your ability to block attacks and shoot arrows to stay alive. The first level introduces you to the core mechanics and enemy behavior, giving you just enough breathing room to get your bearings before the intensity ramps up. With each level, the haunted house grows more hostile, demanding quick reflexes and sharp timing as you fight your way toward the chests and complete your mission.
+Basics of the Game
 
-### Dependencies
+The controls are simple and responsive — W to move forward, S to step back, Spacebar to jump, M to attack, and K to shoot fireballs. You can also dash by pressing shift. The Code for attacking and shooting fireballs has not yet been implemented so there is no combat in the game for now. 
 
-* Describe any prerequisites, libraries, OS version, etc., needed before installing program.
-* ex. Windows 10
+Dependencies
+The game was built to run on windows and the system used to program was unity and visual studio for code.
 
-### Installing
+Authors
 
-* How/where to download your program
-* Any modifications needed to be made to files/folders
+All code was found from youtube tutorials
 
-### Executing program
+https://www.youtube.com/watch?v=K1xZ-rycYY8&t=20s - basic movement
 
-* How to run the program
-* Step-by-step bullets
-```
-code blocks for commands
-```
+https://www.youtube.com/watch?v=BLfNP4Sc_iA - Health bar 
 
-## Help
+https://www.youtube.com/watch?v=2kFGmuPHiA0 - Dash tutorial
 
-Any advise for common problems or issues.
-```
-command to run if program contains helper info
-```
+https://www.youtube.com/watch?v=2SXa10ILJms - Ai Chase
 
-## Authors
+https://www.youtube.com/watch?v=Gf8LOFNnils&list=PLgOEwFbvGm5o8hayFB6skAfa8Z-mw4dPV&index=2 - Animations
 
-Contributors names and contact info
 
-ex. Mr Jones
-ex. [@benpaddlejones](https://github.com/benpaddlejones)
 
-## Version History
+Problems
+There are many problems in my game. These include that I have not fully finished and also the assets made by my partner are very bad, completely just ruining the aesthetic aspect of my game. My game lacks the essential and core aspects of its combat and collection system for chest. My player does not take any damage and i do not have any levels or increasing difficulties. 
 
-* 0.2
-    * Various bug fixes and optimizations
-    * See [commit change]() or See [release history]() or see [branch]()
-* 0.1
-    * Initial Release
 
-## License
 
-This project is licensed under the [NAME HERE] License - see the LICENSE.md file for details
+Acknowledgments
 
-## Acknowledgments
-
-Inspiration, code snippets, etc.
-* [Github md syntax](https://docs.github.com/en/get-started/writing-on-github/getting-started-with-writing-and-formatting-on-github/basic-writing-and-formatting-syntax)
-* [TempeHS Unity template](https://github.com/TempeHS/TempeHS_Unity_DevContainer)
+Some assets are from the unity asset store while other are made by my partner from Multimedia - Emile Nash.
