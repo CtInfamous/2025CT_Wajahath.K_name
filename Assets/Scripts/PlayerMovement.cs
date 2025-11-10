@@ -3,8 +3,23 @@ using UnityEngine;
 
 public class PlayerMovement : MonoBehaviour
 {
+    [SerializeField] private Rigidbody2D rb;
+    [SerializeField] private Transform groundCheck;
+    [SerializeField] private LayerMask groundLayer;
+    [SerializeField] private TrailRenderer tr;
+
+    private Rigidbody2D body;
+    private Animator anim;
+    private bool grounded;
+
+    private void Awake()
+    {
+        //Grab references for rigidbody and animator from object
+        body = GetComponent<Rigidbody2D>();
+        anim = GetComponent<Animator>();
+    }
     private float horizontal;
-    private float speed = 8f;
+    private float speed = 10f;
     private float jumpingPower = 16f;
     private bool isFacingRight = true;
 
@@ -14,13 +29,11 @@ public class PlayerMovement : MonoBehaviour
     private float dashingTime = 0.2f;
     private float dashingCooldown = 1f;
 
-    [SerializeField] private Rigidbody2D rb;
-    [SerializeField] private Transform groundCheck;
-    [SerializeField] private LayerMask groundLayer;
-    [SerializeField] private TrailRenderer tr;
+
 
     private void Update()
     {
+        
         if (isDashing)
         {
             return;
@@ -31,6 +44,7 @@ public class PlayerMovement : MonoBehaviour
         if (Input.GetButtonDown("Jump") && IsGrounded())
         {
             rb.velocity = new Vector2(rb.velocity.x, jumpingPower);
+            anim.SetTrigger("jump");// Trigger jump animation
         }
 
         if (Input.GetButtonUp("Jump") && rb.velocity.y > 0f)
@@ -44,6 +58,10 @@ public class PlayerMovement : MonoBehaviour
         }
 
         Flip();
+
+        // Set animation parameters
+        anim.SetBool("Run", Mathf.Abs(rb.velocity.x) > 0.1f);
+        anim.SetBool("grounded", grounded);
     }
 
     private void FixedUpdate()
@@ -58,7 +76,7 @@ public class PlayerMovement : MonoBehaviour
 
     private bool IsGrounded()
     {
-        return Physics2D.OverlapCircle(groundCheck.position, 0.2f, groundLayer);
+        return Physics2D.OverlapCircle(groundCheck.position, 0.3f, groundLayer);
     }
 
     private void Flip()
@@ -87,4 +105,14 @@ public class PlayerMovement : MonoBehaviour
         yield return new WaitForSeconds(dashingCooldown);
         canDash = true;
     }
-}
+
+
+
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        if (collision.gameObject.tag == "Ground")
+        {
+            grounded = true;
+        }
+    }
+}    
